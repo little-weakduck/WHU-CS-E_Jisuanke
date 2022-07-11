@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,c++
 
+*.dSYM
+
 ### C++ ###
 # Prerequisites
 *.d
@@ -94,3 +96,6 @@ Temporary Items
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,c++
+.vscode
+广度优先搜索/day7-sugarTime
+a
