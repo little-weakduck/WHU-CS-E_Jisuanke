@@ -29,9 +29,7 @@ void insert2(int u, int v, double w)
 }
 double dist(int u, int v)
 {
-    double dx = a[u].x - a[v].x;
-    double dy = a[u].y - a[v].y;
-    return sqrt(dx * dx + dy * dy);
+    return sqrt((a[u].x - a[v].x) * (a[u].x - a[v].x) + (a[u].y - a[v].y) * (a[u].y - a[v].y));
 }
 void getpath(int x)
 {
@@ -46,13 +44,13 @@ void getpath(int x)
 
 void dijkstra()
 {
+    memset(vis, 0, sizeof(vis));
     for (int i = 1; i <= n; i++)
     {
         d[i] = inf;
     }
-    memset(vis, 0, sizeof(vis));
     s = 1;
-    d[s] = 0;
+    d[1] = 0;
     for (int i = 1; i <= n; i++)
     {
         double mind = inf;
@@ -68,7 +66,7 @@ void dijkstra()
         if (mind == inf)
             break;
         vis[u] = 1;
-        for (int j = p[u]; ~j; j = e[j].next)
+        for (int j = p[u]; j != -1; j = e[j].next)
         {
             if (e[j].f)
             { //第一次找最短路时f均为1
@@ -86,12 +84,13 @@ void dijkstra()
 }
 int main()
 {
+    memset(p, -1, sizeof(p));
     scanf("%d%d", &n, &m);
     for (int i = 1; i <= n; i++)
     {
         scanf("%d%d", &a[i].x, &a[i].y);
     }
-    memset(p, -1, sizeof(p));
+
     for (int i = 1; i <= m; i++)
     {
         int u, v;
